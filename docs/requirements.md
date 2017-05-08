@@ -1,6 +1,9 @@
 # Systems Requirements
 
-PHP 7.1+ : cURL, json, PDO
+Linux OS : recommend Debian
 
-MySQL 5.7+
+PHP 7.1 : cURL, json, PDO
 
+MySQL 5.7
+
+Web server : recommend nginx
