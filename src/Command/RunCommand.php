@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace DavidJEddy\Command;
 
-use Nette\Security\Passwords;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Helper\ProgressBar;
@@ -12,10 +12,30 @@ use Symfony\Component\Console\Helper\ProgressBar;
 final class RunCommand extends Command
 {
     /**
-     * [$frequence description]
+     * How long to make the progress part
+     * 
+     * @var [type]
+     */
+    public $progressBar = ['length' => 100];
+
+    /**
+     * Data source json
+     * @var string
+     */
+    public $dataSourceFile = '/app/src/data.json';
+
+    /**
+     * property to hold the parsed data source
+     * 
      * @var null
      */
-    protected $frequence = null;
+    private $data = null;
+
+    /**
+     * [$highestTime description]
+     * @var integer
+     */
+    private $times = [];
 
     /**
      * Setup the console command and its abilities
@@ -25,10 +45,15 @@ final class RunCommand extends Command
      */
     protected function configure()
     {
+        try {
+            $this->data = \json_decode(\file_get_contents($this->dataSourceFile));
+        } catch (\Exception $e) {
+            throw new \Exception('Unable to parse data: ' . json_last_error(), 1);
+        }
 
+        $this->getHLTimes();
         $this->setName('run');
-        $this->setDescription('Importing weather data for provided postal (zip) codes every ' .
-            $this->frequence[1] . ' ' . $this->frequence[0] . '.');      
+        $this->setDescription('Importing weather data for provided postal (zip) at the specified interval.');
     }
 
     /**
@@ -39,24 +64,22 @@ final class RunCommand extends Command
      * @return [type]                  [description]
      */
     protected function execute(InputInterface $input, OutputInterface $output)
-    {
-        $progress = new ProgressBar($output, 50);
+    {      
+        for ($i = 0; $i < $this->time['highest']; $i++) {
+            // limit ticks to one per second, as the codes frequence is in minimal units of seconds
+            sleep(1);
 
-        $progress->start();
+            for ($j; $j < count($this->data->); $j++) {
 
-        $i = 0;
-        while ($i++ < 50) {
-            // ... do some work
+            }
+            // if timer is below lowest time, continue
 
-            // advance the progress bar 1 unit
-            $progress->advance();
+            // check each codes, if timer count matches code['value']
+            // save request attempt
+            // send async call for every codes
 
-            // you can also advance the progress bar by more than 1 unit
-            // $progress->advance(3);
+            // if timer is equal to highest time, reset
         }
-
-        // ensure that the progress bar is at 100%
-        $progress->finish();
     }
 
     /**
@@ -66,6 +89,39 @@ final class RunCommand extends Command
      */
     public function __destrcut()
     {
+        echo "\n";
         return 0;
+    }
+
+    /**
+     * Get the highest and lowest times
+     * @return [type] [description]
+     */
+    private function getHLTimes()
+    {
+        $this->time['lowest']  = min($this->data);
+        $this->time['highest'] = max($this->data);
+    }
+
+    /**
+     * [makeRequest description]
+     * @return [type] [description]
+     */
+    private function makeRequest()
+    {
+
+        // if request is successful, save to response table
+        //  trigger weather processing
+        // else save payload to error table
+    }
+
+    /**
+     * Save correct responses to Weather table for human readable access
+     * 
+     * @return [type] [description]
+     */
+    private function saveWeather()
+    {
+
     }
 }

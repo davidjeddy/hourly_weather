@@ -21,3 +21,5 @@ Application that will track current weather measurements for a given set of zip 
   - as such Composer is also allowed
  - The usage of an entire MVC framework is discouraged, does not show problem solving
  - The configuration file can be of any desired format
+ - Each zip code can have a different retrieval timeframe
+   - All timeframes are in seconds
