@@ -8,3 +8,5 @@ apt-get install -y wget git
 `php ./vendor/codeception/codeception/codecept`
 
 export PATH=$PATH:/app/vendor/bin
+
+Helpful sources: https://pehapkari.cz/blog/2017/01/05/symfony-console-from-scratch/

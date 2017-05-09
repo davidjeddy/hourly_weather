@@ -10,9 +10,13 @@
         }
     ],
     "require": {
-        "symfony/console": "~3.2"
+        "symfony/console": "~3.2",
+        "nette/security": "^2.4"
     },
     "require-dev": {
         "codeception/codeception": "~2.2"
+    },
+    "autoload": {
+        "psr-4": {"DavidJEddy\\": "src/"}
     }
 }
