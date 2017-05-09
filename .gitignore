@@ -1,4 +1,4 @@
+/vendor/
 
 *.bak
-
-/vendor/
+*.phar
