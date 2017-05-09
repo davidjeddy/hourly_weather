@@ -8,6 +8,7 @@ $application = new Symfony\Component\Console\Application;
 
 // Register all Commands
 $application->add(new DavidJEddy\Command\TestCommand);
+$application->add(new DavidJEddy\Command\RunCommand);
 
 // Run it
 $application->run();
