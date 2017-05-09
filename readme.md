@@ -18,5 +18,6 @@ Application that will track current weather measurements for a given set of zip 
 
 # Assumptions
  - The usage of external PHP libraries is permitted, why re-invent the wheel?
+  - as such Composer is also allowed
  - The usage of an entire MVC framework is discouraged, does not show problem solving
  - The configuration file can be of any desired format
