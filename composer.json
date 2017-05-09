@@ -1,0 +1,18 @@
+{
+    "name": "davidjeddy/hourly-weather-demo",
+    "description": "Hourly weather retrieval demo.",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "David J Eddy",
+            "email": "me@davidjeddy.com"
+        }
+    ],
+    "require": {
+        "symfony/console": 3.2
+    },
+    "require-dev": {
+        "codeception/codeception": 2.2
+    }
+}
